@@ -24,14 +24,16 @@ export default function AnimatedText({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true)
-    }, delay)
+    }, delay * 1000)
 
     return () => clearTimeout(timer)
   }, [delay])
 
+  if (!text) return null
+
   const getAnimationClass = () => {
     if (!isVisible) return 'opacity-0'
-    
+
     switch (animationType) {
       case 'slide-left':
         return 'animate-text-slide-left'
@@ -62,7 +64,7 @@ export default function AnimatedText({
             key={index}
             className={`text-char-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
-              animationDelay: `${delay + index * 0.05}s`,
+              animationDelay: `${index * 0.05}s`,
               animationDuration: `${duration}s`,
             }}
           >
@@ -81,7 +83,7 @@ export default function AnimatedText({
             key={index}
             className={`text-word-animate inline-block ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
-              animationDelay: `${delay + index * 0.1}s`,
+              animationDelay: `${index * 0.1}s`,
               animationDuration: `${duration}s`,
             }}
           >
@@ -97,7 +99,7 @@ export default function AnimatedText({
     <span
       className={`${className} ${getAnimationClass()}`}
       style={{
-        animationDelay: `${delay}s`,
+        animationDelay: '0s',
         animationDuration: `${duration}s`,
       }}
     >
