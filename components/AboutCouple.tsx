@@ -61,7 +61,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
         axios.get(`${API_URL}/images/wedding/${wedding._id}/groom`).catch(() => ({ data: [] })),
         axios.get(`${API_URL}/images/wedding/${wedding._id}/bride`).catch(() => ({ data: [] }))
       ])
-      
+
       if (groomRes.data?.length > 0) {
         setGroomImage(groomRes.data[0].path)
       }
@@ -77,10 +77,10 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
     <section ref={sectionRef} id="about" className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-dots opacity-20"></div>
-      
+
       {/* Decorative border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-20 opacity-5 animate-float" style={{ animationDuration: '8s' }}>
@@ -96,13 +96,13 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
           <Heart className="w-12 h-12 text-rose-500 fill-rose-500" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <HeartHandshake className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pink-800 mb-4">
             <span className="gradient-text">
               <AnimatedText text={wedding.groomName} animationType="slide-right" delay={0.4} className="inline-block" />
             </span>
@@ -130,7 +130,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                 <div className="relative image-sparkle-overlay">
                   {/* Animated glow background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full blur-2xl opacity-30 group-hover:opacity-70 transition-opacity duration-500 animate-image-glow"></div>
-                  
+
                   {/* Sparkle effects */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {[...Array(8)].map((_, i) => (
@@ -148,7 +148,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                       </div>
                     ))}
                   </div>
-                  
+
                   <Image
                     src={`https://api.ocuadua.com${groomImage}`}
                     alt={wedding.groomName}
@@ -157,7 +157,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                     className="relative w-64 h-64 rounded-full mx-auto object-cover shadow-2xl ring-4 ring-pink-100 transform group-hover:scale-110 transition-all duration-500 image-hover-lift animate-image-float"
                     quality={85}
                   />
-                  
+
                   {/* Rotating ring effect */}
                   <div className="absolute inset-0 rounded-full border-4 border-pink-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-spin" style={{ animationDuration: '20s' }}></div>
                 </div>
@@ -191,7 +191,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                 <div className="relative image-sparkle-overlay">
                   {/* Animated glow background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full blur-2xl opacity-30 group-hover:opacity-70 transition-opacity duration-500 animate-image-glow"></div>
-                  
+
                   {/* Sparkle effects */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {[...Array(8)].map((_, i) => (
@@ -209,7 +209,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                       </div>
                     ))}
                   </div>
-                  
+
                   <Image
                     src={`https://api.ocuadua.com${brideImage}`}
                     alt={wedding.brideName}
@@ -218,7 +218,7 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
                     className="relative w-64 h-64 rounded-full mx-auto object-cover shadow-2xl ring-4 ring-pink-100 transform group-hover:scale-110 transition-all duration-500 image-hover-lift animate-image-float"
                     quality={85}
                   />
-                  
+
                   {/* Rotating ring effect */}
                   <div className="absolute inset-0 rounded-full border-4 border-pink-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-spin" style={{ animationDuration: '20s' }}></div>
                 </div>
