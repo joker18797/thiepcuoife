@@ -38,9 +38,9 @@ export default function ParentsSection({ parents }: ParentsSectionProps) {
     <section className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-rose opacity-10"></div>
-      
+
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating family elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 left-20 opacity-5 animate-float" style={{ animationDuration: '9s' }}>
@@ -53,16 +53,19 @@ export default function ParentsSection({ parents }: ParentsSectionProps) {
           <Heart className="w-12 h-12 text-rose-400 fill-rose-400" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <Users className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text="Gia đình" animationType="bounce" delay={0.4} />
-            </span>
+            <AnimatedText
+              text="Gia đình"
+              animationType="bounce"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>
@@ -81,9 +84,12 @@ export default function ParentsSection({ parents }: ParentsSectionProps) {
                     <Users className="w-6 h-6 md:w-10 md:h-10 text-blue-500" />
                   </div>
                   <h3 className="text-base md:text-3xl font-bold text-gray-800 mb-3 md:mb-6">
-                    <span className="gradient-text">
-                      <AnimatedText text="Gia đình Chú Rể" animationType="slide-right" delay={0.2} />
-                    </span>
+                    <AnimatedText
+                      text="Gia đình Chú Rể"
+                      animationType="slide-right"
+                      delay={0.2}
+                      className="gradient-text inline-block"
+                    />
                   </h3>
                 </div>
                 <div className="space-y-2 md:space-y-4 text-sm md:text-lg text-gray-700">
@@ -111,9 +117,12 @@ export default function ParentsSection({ parents }: ParentsSectionProps) {
                     <Users className="w-6 h-6 md:w-10 md:h-10 text-pink-500" />
                   </div>
                   <h3 className="text-base md:text-3xl font-bold text-gray-800 mb-3 md:mb-6">
-                    <span className="gradient-text">
-                      <AnimatedText text="Gia đình Cô Dâu" animationType="slide-left" delay={0.4} />
-                    </span>
+                    <AnimatedText
+                      text="Gia đình Cô Dâu"
+                      animationType="slide-left"
+                      delay={0.4}
+                      className="gradient-text inline-block"
+                    />
                   </h3>
                 </div>
                 <div className="space-y-2 md:space-y-4 text-sm md:text-lg text-gray-700">

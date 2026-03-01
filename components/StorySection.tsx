@@ -53,9 +53,9 @@ export default function StorySection({ story }: StorySectionProps) {
     <section className="py-20 bg-gradient-to-b from-white via-pink-50/20 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-rose opacity-15"></div>
-      
+
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating story elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 left-20 opacity-5 animate-float" style={{ animationDuration: '9s' }}>
@@ -68,16 +68,19 @@ export default function StorySection({ story }: StorySectionProps) {
           <Heart className="w-12 h-12 text-pink-500 fill-pink-500" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <Heart className="w-10 h-10 text-pink-500 fill-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text="Chuyện chúng mình" animationType="bounce" delay={0.4} />
-            </span>
+            <AnimatedText
+              text="Chuyện chúng mình"
+              animationType="bounce"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>
@@ -90,7 +93,7 @@ export default function StorySection({ story }: StorySectionProps) {
           {story.map((item, index) => {
             const isVisible = visibleItems.has(index)
             const animationClass = index % 2 === 0 ? 'animate-image-slide-left' : 'animate-image-slide-right'
-            
+
             return (
               <div
                 key={index}
@@ -99,7 +102,7 @@ export default function StorySection({ story }: StorySectionProps) {
                 }}
                 data-index={index}
                 className={isVisible ? animationClass : 'opacity-0'}
-                style={{ 
+                style={{
                   animationDelay: `${index * 0.2}s`,
                   transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
                 }}
@@ -127,7 +130,7 @@ export default function StorySection({ story }: StorySectionProps) {
                             </div>
                           ))}
                         </div>
-                        
+
                         <Image
                           src={item.image.startsWith('http') ? item.image : `https://api.ocuadua.com${item.image}`}
                           alt={item.title}
@@ -137,53 +140,53 @@ export default function StorySection({ story }: StorySectionProps) {
                           loading={index < 2 ? 'eager' : 'lazy'}
                           quality={85}
                         />
-                        
+
                         {/* Enhanced gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
+
                         {/* Animated border glow */}
                         <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 animate-image-glow"></div>
-                        
+
                         {/* Heart icon on hover */}
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                           <Heart className="w-16 h-16 text-white fill-white animate-scale-burst" />
                         </div>
                       </div>
                     </div>
-                  
-                  {/* Content */}
-                  <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                    <div className="text-center md:text-left">
-                      {item.date && (
-                        <p className="text-pink-500 font-semibold mb-4 text-lg tracking-wide">
-                          <AnimatedText text={item.date} animationType="slide-down" delay={0.2} />
+
+                    {/* Content */}
+                    <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
+                      <div className="text-center md:text-left">
+                        {item.date && (
+                          <p className="text-pink-500 font-semibold mb-4 text-lg tracking-wide">
+                            <AnimatedText text={item.date} animationType="slide-down" delay={0.2} />
+                          </p>
+                        )}
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                          <AnimatedText text={item.title} animationType={index % 2 === 0 ? "slide-right" : "slide-left"} delay={0.4} />
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed text-lg">
+                          <AnimatedText text={item.content} animationType="fade-scale" delay={0.6} splitBy="word" />
                         </p>
-                      )}
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-                        <AnimatedText text={item.title} animationType={index % 2 === 0 ? "slide-right" : "slide-left"} delay={0.4} />
-                      </h3>
-                      <p className="text-gray-700 leading-relaxed text-lg">
-                        <AnimatedText text={item.content} animationType="fade-scale" delay={0.6} splitBy="word" />
-                      </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                /* Layout for items without images */
-                <div className="text-center">
-                  {item.date && (
-                    <p className="text-pink-500 font-semibold mb-4 text-lg tracking-wide">
-                      <AnimatedText text={item.date} animationType="slide-down" delay={0.2} />
+                ) : (
+                  /* Layout for items without images */
+                  <div className="text-center">
+                    {item.date && (
+                      <p className="text-pink-500 font-semibold mb-4 text-lg tracking-wide">
+                        <AnimatedText text={item.date} animationType="slide-down" delay={0.2} />
+                      </p>
+                    )}
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
+                      <AnimatedText text={item.title} animationType="bounce" delay={0.4} />
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto">
+                      <AnimatedText text={item.content} animationType="fade-scale" delay={0.6} splitBy="word" />
                     </p>
-                  )}
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-                    <AnimatedText text={item.title} animationType="bounce" delay={0.4} />
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg max-w-3xl mx-auto">
-                    <AnimatedText text={item.content} animationType="fade-scale" delay={0.6} splitBy="word" />
-                  </p>
-                </div>
-              )}
+                  </div>
+                )}
               </div>
             )
           })}

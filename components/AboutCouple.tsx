@@ -102,16 +102,22 @@ export default function AboutCouple({ wedding }: AboutCoupleProps) {
           <div className="inline-block mb-4">
             <HeartHandshake className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pink-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text={wedding.groomName} animationType="slide-right" delay={0.4} className="inline-block" />
-            </span>
-            <span className="mx-4 text-pink-400">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pink-800 mb-4 flex items-center justify-center flex-wrap gap-4">
+            <AnimatedText
+              text={wedding.groomName || wedding.groomFullName.split(' ').pop() || ''}
+              animationType="slide-right"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
+            <span className="text-pink-400">
               <AnimatedText text="&" animationType="zoom" delay={0.7} />
             </span>
-            <span className="gradient-text">
-              <AnimatedText text={wedding.brideName} animationType="slide-left" delay={1.0} className="inline-block" />
-            </span>
+            <AnimatedText
+              text={wedding.brideName || wedding.brideFullName.split(' ').pop() || ''}
+              animationType="slide-left"
+              delay={1.0}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '1.3s', animationDuration: '0.6s' }}></div>

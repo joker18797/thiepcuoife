@@ -31,7 +31,7 @@ export default function GiftSection({ weddingId, bankAccounts }: GiftSectionProp
   const [copied, setCopied] = useState<string | null>(null)
   const [groomQR, setGroomQR] = useState<string | null>(null)
   const [brideQR, setBrideQR] = useState<string | null>(null)
-  
+
   // Lấy param từ URL để xác định hiển thị QR của ai
   const personParam = searchParams?.get('person')?.toLowerCase() // 'groom' hoặc 'bride'
   const showOnlyGroom = personParam === 'groom' || personParam === 'chure'
@@ -55,7 +55,7 @@ export default function GiftSection({ weddingId, bankAccounts }: GiftSectionProp
         axios.get(`${API_URL}/images/wedding/${weddingId}/qr-groom`).catch(() => ({ data: [] })),
         axios.get(`${API_URL}/images/wedding/${weddingId}/qr-bride`).catch(() => ({ data: [] }))
       ])
-      
+
       if (groomRes.data?.length > 0) {
         setGroomQR(groomRes.data[0].path)
       }
@@ -69,12 +69,12 @@ export default function GiftSection({ weddingId, bankAccounts }: GiftSectionProp
 
   const fetchQRCode = async (type: 'groom' | 'bride') => {
     try {
-      const endpoint = type === 'groom' 
+      const endpoint = type === 'groom'
         ? `${API_URL}/images/wedding/${weddingId}/qr-groom`
         : `${API_URL}/images/wedding/${weddingId}/qr-bride`
-      
+
       const response = await axios.get(endpoint).catch(() => ({ data: [] }))
-      
+
       if (response.data?.length > 0) {
         if (type === 'groom') {
           setGroomQR(response.data[0].path)
@@ -105,9 +105,9 @@ export default function GiftSection({ weddingId, bankAccounts }: GiftSectionProp
     <section className="py-20 bg-gradient-to-b from-pink-50 via-white/90 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-dots opacity-10"></div>
-      
+
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating gift elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 right-1/4 opacity-5 animate-float" style={{ animationDuration: '7s' }}>
@@ -120,16 +120,19 @@ export default function GiftSection({ weddingId, bankAccounts }: GiftSectionProp
           <Wallet className="w-12 h-12 text-pink-500" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
             <Gift className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text="Hộp mừng cưới" animationType="bounce" delay={0.4} />
-            </span>
+            <AnimatedText
+              text="Hộp mừng cưới"
+              animationType="bounce"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>

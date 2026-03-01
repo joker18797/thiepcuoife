@@ -89,9 +89,9 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
       <section className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white relative overflow-hidden">
         {/* Background pattern */}
         <div className="absolute inset-0 bg-pattern-dots opacity-15"></div>
-        
+
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-        
+
         {/* Floating camera icons */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-20 right-1/4 opacity-10 animate-float" style={{ animationDuration: '7s' }}>
@@ -104,16 +104,19 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
             <Sparkles className="w-8 h-8 text-rose-300" />
           </div>
         </div>
-        
+
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="inline-block mb-4">
               <Camera className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-              <span className="gradient-text">
-                <AnimatedText text="Album Hình Cưới" animationType="bounce" delay={0.4} />
-              </span>
+              <AnimatedText
+                text="Album Hình Cưới"
+                animationType="bounce"
+                delay={0.4}
+                className="gradient-text inline-block"
+              />
             </h2>
             <div className="flex items-center justify-center gap-2">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>
@@ -121,13 +124,13 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-pink-300 animate-text-slide-left" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {images.map((image, index) => {
               const imageUrl = `https://api.ocuadua.com${image.path}`
               const isLoaded = loadedImages.has(image._id)
               const isVisible = visibleImages.has(image._id)
-              
+
               // Different animation styles for variety
               const animationStyles = [
                 'animate-image-reveal',
@@ -137,7 +140,7 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
                 'animate-image-slide-right',
               ]
               const animationClass = animationStyles[index % animationStyles.length]
-              
+
               return (
                 <div
                   key={image._id}
@@ -145,10 +148,9 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
                     if (el) imageRefs.current.set(image._id, el)
                   }}
                   data-image-id={image._id}
-                  className={`aspect-square overflow-hidden rounded-xl cursor-pointer group relative shadow-lg image-hover-lift image-sparkle-overlay bg-gray-100 ${
-                    isVisible ? animationClass : 'opacity-0'
-                  }`}
-                  style={{ 
+                  className={`aspect-square overflow-hidden rounded-xl cursor-pointer group relative shadow-lg image-hover-lift image-sparkle-overlay bg-gray-100 ${isVisible ? animationClass : 'opacity-0'
+                    }`}
+                  style={{
                     animationDelay: `${index * 0.15}s`,
                     transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
                   }}
@@ -159,7 +161,7 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-500"></div>
                     </div>
                   )}
-                  
+
                   {/* Sparkle effect overlay */}
                   <div className="absolute inset-0 pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {[...Array(6)].map((_, i) => (
@@ -177,29 +179,28 @@ export default function PhotoAlbum({ weddingId }: PhotoAlbumProps) {
                       </div>
                     ))}
                   </div>
-                  
+
                   <Image
                     src={imageUrl}
                     alt="Wedding photo"
                     width={400}
                     height={400}
-                    className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-                      isLoaded ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
                     loading={index < 8 ? 'eager' : 'lazy'}
                     onLoad={() => handleImageLoad(image._id)}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
                     quality={85}
                   />
-                  
+
                   {/* Gradient overlay with glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   {/* Heart icon on hover */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <Heart className="w-12 h-12 text-white fill-white animate-scale-burst" />
                   </div>
-                  
+
                   {/* Border glow effect */}
                   <div className="absolute inset-0 rounded-xl border-2 border-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none animate-image-glow"></div>
                 </div>

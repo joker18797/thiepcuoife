@@ -8,8 +8,11 @@ import AnimatedText from './AnimatedText'
 
 interface HeroSectionProps {
   wedding: {
+    _id: string
     groomName: string
     brideName: string
+    groomFullName: string
+    brideFullName: string
     weddingDate: string
     saveTheDateText?: string
   }
@@ -23,14 +26,14 @@ export default function HeroSection({ wedding }: HeroSectionProps) {
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-animated overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-rose opacity-30"></div>
-      
+
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
-      
+
       {/* Animated particles */}
       <div className="particles">
         {[...Array(20)].map((_, i) => (
@@ -47,7 +50,7 @@ export default function HeroSection({ wedding }: HeroSectionProps) {
           />
         ))}
       </div>
-      
+
       {/* Floating hearts decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 opacity-20 animate-float" style={{ animationDuration: '4s' }}>
@@ -66,7 +69,7 @@ export default function HeroSection({ wedding }: HeroSectionProps) {
           <Heart className="w-10 h-10 text-pink-400 fill-pink-400" />
         </div>
       </div>
-      
+
       {/* Sparkle effects */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
@@ -84,21 +87,34 @@ export default function HeroSection({ wedding }: HeroSectionProps) {
           </div>
         ))}
       </div>
-      
+
       <div className="relative z-10 text-center px-4 py-20">
         <div className="mb-8">
           <p className="text-pink-500 font-semibold tracking-[0.3em] uppercase text-sm mb-6">
             <AnimatedText text="Save the Date" animationType="slide-down" delay={0.3} />
           </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 flex flex-col items-center gap-4">
             <span className="block text-gray-800 drop-shadow-sm">
-              <AnimatedText text={wedding.groomName} animationType="slide-right" delay={0.5} className="inline-block" />
+              <AnimatedText
+                text={wedding.groomName || wedding.groomFullName.split(' ').pop() || ''}
+                animationType="slide-right"
+                delay={0.5}
+                className="inline-block"
+              />
             </span>
-            <span className="text-4xl md:text-5xl lg:text-6xl mx-4 gradient-text font-serif inline-block">
-              <AnimatedText text="&" animationType="zoom" delay={0.8} />
-            </span>
+            <AnimatedText
+              text="&"
+              animationType="zoom"
+              delay={0.8}
+              className="text-4xl md:text-5xl lg:text-6xl gradient-text font-serif inline-block"
+            />
             <span className="block text-gray-800 drop-shadow-sm">
-              <AnimatedText text={wedding.brideName} animationType="slide-left" delay={1.1} className="inline-block" />
+              <AnimatedText
+                text={wedding.brideName || wedding.brideFullName.split(' ').pop() || ''}
+                animationType="slide-left"
+                delay={1.1}
+                className="inline-block"
+              />
             </span>
           </h1>
           <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-light mb-2">

@@ -48,7 +48,7 @@ export default function Guestbook({ weddingId }: GuestbookProps) {
 
   const onSubmit = async (data: WishForm) => {
     if (submitting) return // Prevent double submission
-    
+
     setSubmitting(true)
     try {
       const response = await axios.post(`${API_URL}/wishes`, {
@@ -56,7 +56,7 @@ export default function Guestbook({ weddingId }: GuestbookProps) {
         guestName: data.guestName.trim(),
         message: data.message.trim()
       })
-      
+
       if (response.data) {
         reset()
         await fetchWishes()
@@ -75,9 +75,9 @@ export default function Guestbook({ weddingId }: GuestbookProps) {
     <section className="py-20 bg-gradient-to-b from-pink-50 via-white/80 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-rose opacity-10"></div>
-      
+
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating message elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-1/4 opacity-5 animate-float" style={{ animationDuration: '9s' }}>
@@ -90,16 +90,19 @@ export default function Guestbook({ weddingId }: GuestbookProps) {
           <Heart className="w-12 h-12 text-pink-500 fill-pink-500" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
             <PenTool className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text="Sổ Lưu Bút" animationType="bounce" delay={0.4} />
-            </span>
+            <AnimatedText
+              text="Sổ Lưu Bút"
+              animationType="bounce"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>
@@ -110,9 +113,9 @@ export default function Guestbook({ weddingId }: GuestbookProps) {
 
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Form */}
-          <form 
+          <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-gradient-to-br from-white to-pink-50 rounded-2xl shadow-xl p-6 md:p-8 mb-12 border border-pink-100 animate-fade-in-up" 
+            className="bg-gradient-to-br from-white to-pink-50 rounded-2xl shadow-xl p-6 md:p-8 mb-12 border border-pink-100 animate-fade-in-up"
             style={{ animationDelay: '0.2s' }}
             noValidate
           >

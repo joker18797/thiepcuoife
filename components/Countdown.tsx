@@ -42,10 +42,10 @@ export default function Countdown({ weddingDate }: CountdownProps) {
     <section className="py-20 bg-gradient-to-b from-pink-50 via-white to-rose-50 relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-hearts opacity-10"></div>
-      
+
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating clock icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-1/4 opacity-10 animate-float" style={{ animationDuration: '6s' }}>
@@ -58,17 +58,20 @@ export default function Countdown({ weddingDate }: CountdownProps) {
           <Sparkles className="w-8 h-8 text-pink-300" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4 text-center">
         <div className="mb-4">
           <Clock className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12">
-          <span className="gradient-text">
-            <AnimatedText text="The Big Day!" animationType="bounce" delay={0.4} />
-          </span>
+          <AnimatedText
+            text="The Big Day!"
+            animationType="bounce"
+            delay={0.4}
+            className="gradient-text inline-block"
+          />
         </h2>
-        
+
         <div className="flex justify-center gap-4 md:gap-6 lg:gap-8 flex-wrap">
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-w-[120px] transform hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-scale-in" style={{ animationDelay: '0.3s' }}>
             <div className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-2">
@@ -76,21 +79,21 @@ export default function Countdown({ weddingDate }: CountdownProps) {
             </div>
             <div className="text-gray-600 font-semibold uppercase tracking-wider text-sm">Ngày</div>
           </div>
-          
+
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-w-[120px] transform hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-scale-in" style={{ animationDelay: '0.4s' }}>
             <div className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-2">
               {timeLeft.hours}
             </div>
             <div className="text-gray-600 font-semibold uppercase tracking-wider text-sm">Giờ</div>
           </div>
-          
+
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-w-[120px] transform hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-scale-in" style={{ animationDelay: '0.5s' }}>
             <div className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-2">
               {timeLeft.minutes}
             </div>
             <div className="text-gray-600 font-semibold uppercase tracking-wider text-sm">Phút</div>
           </div>
-          
+
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-w-[120px] transform hover:scale-105 transition-all duration-300 hover:shadow-2xl animate-scale-in" style={{ animationDelay: '0.6s' }}>
             <div className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-2">
               {timeLeft.seconds}

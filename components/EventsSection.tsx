@@ -23,9 +23,9 @@ export default function EventsSection({ events }: EventsSectionProps) {
     <section className="py-20 bg-gradient-to-b from-white via-pink-50/25 to-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-pattern-hearts opacity-10"></div>
-      
+
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
-      
+
       {/* Floating event elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 right-20 opacity-5 animate-float" style={{ animationDuration: '8s' }}>
@@ -38,16 +38,19 @@ export default function EventsSection({ events }: EventsSectionProps) {
           <Heart className="w-12 h-12 text-pink-300 fill-pink-300" />
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
             <PartyPopper className="w-10 h-10 text-pink-500 mx-auto animate-text-zoom" style={{ animationDelay: '0.2s', animationDuration: '0.6s' }} />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
-            <span className="gradient-text">
-              <AnimatedText text="Sự Kiện Cưới" animationType="bounce" delay={0.4} />
-            </span>
+            <AnimatedText
+              text="Sự Kiện Cưới"
+              animationType="bounce"
+              delay={0.4}
+              className="gradient-text inline-block"
+            />
           </h2>
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-pink-300 animate-text-slide-right" style={{ animationDelay: '0.7s', animationDuration: '0.6s' }}></div>

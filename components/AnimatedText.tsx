@@ -17,7 +17,7 @@ export default function AnimatedText({
   animationType = 'slide-up',
   delay = 0,
   duration = 0.8,
-  splitBy = 'word',
+  splitBy,
 }: AnimatedTextProps) {
   const [isVisible, setIsVisible] = useState(false)
 
